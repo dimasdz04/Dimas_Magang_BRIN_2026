@@ -1,0 +1,27 @@
+ERC report (2026-09-21T11:43:29, Encoding UTF8)
+Report includes: Errors, Warnings
+
+***** Sheet /
+[footprint_link_issues]: The current configuration does not include the footprint library 'MC00100'
+    ; warning
+    @(4100 mils, 2550 mils): Symbol PS1 [MC00100]
+[lib_symbol_mismatch]: Symbol 'MC00100' doesn't match copy in library 'MC00100'
+    ; warning
+    @(4100 mils, 2550 mils): Symbol PS1 [MC00100]
+[footprint_link_issues]: The current configuration does not include the footprint library 'MAX485_MODULE_5V_LOGIC_TLL_TO_RS-485_CONVERTER'
+    ; warning
+    @(7150 mils, 5400 mils): Symbol U2 [MAX485_MODULE_5V_LOGIC_TLL_TO_RS-4...]
+[isolated_pin_label]: Label connected to only one pin
+    ; warning
+    @(8050 mils, 5300 mils): Label 'RS485_A'
+[isolated_pin_label]: Label connected to only one pin
+    ; warning
+    @(8050 mils, 5400 mils): Label 'RS485_B'
+
+ ** ERC messages: 5  Errors 0  Warnings 5
+
+ ** Ignored checks:
+    - Global label only appears once in the schematic
+    - Four connection points are joined together
+    - SPICE model issue
+    - Assigned footprint doesn't match footprint filters
