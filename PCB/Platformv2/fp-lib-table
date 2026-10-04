@@ -1,0 +1,4 @@
+(fp_lib_table
+	(version 7)
+	(lib (name "lora_module") (type "KiCad") (uri "D:/My Folder/College sementara/BRIN/Magang coy/PCB/Library/lora_module.pretty") (options "") (descr ""))
+)

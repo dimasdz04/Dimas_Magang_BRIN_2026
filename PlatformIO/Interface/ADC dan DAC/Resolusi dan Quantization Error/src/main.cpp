@@ -1,51 +1,36 @@
 #include <Arduino.h>
 
-const int pinLM35 = A0;
-const int jumlahSampel = 20; // Kita gunakan 20 sampel historis
-int indexSampel = 0;
-float totalSuhu = 0;
-float arraySuhu[jumlahSampel]; // Array untuk menyimpan 20 data terakhir
+const int pinPotensio = A0;
+const int pinPWM = 9;
+
+unsigned long timerSerial = 0;
+const long intervalSerial = 500; // Update layar tiap setengah detik agar mudah dibaca
 
 void setup() {
   Serial.begin(9600);
-  
-  // Mengisi array awal dengan nilai 0 agar tidak ada data acak (garbage memory)
-  for (int i = 0; i < jumlahSampel; i++) {
-    arraySuhu[i] = 0;
-  }
+  pinMode(pinPWM, OUTPUT);
 }
 
 void loop() {
-  // 1. Baca data keras dari ADC
-  int nilaiADC = analogRead(pinLM35);
-  float tegangan = (nilaiADC * 5.0) / 1024.0;
-  float suhuKasar = tegangan * 100.0; // Suhu dengan Quantization Error
+  // 1. Baca Analog Input (ADC 10-bit: 0 - 1023)
+  int nilaiADC = analogRead(pinPotensio);
+  
+  // 2. Konversi ke Skala PWM 8-bit (0 - 255)
+  // Bisa pakai map(nilaiADC, 0, 1023, 0, 255) atau bagi 4 secara langsung
+  int nilaiPWM = nilaiADC / 4; 
+  
+  // 3. Keluarkan Sinyal PWM
+  analogWrite(pinPWM, nilaiPWM);
 
-  // 2. Algoritma Moving Average
-  // Kurangi nilai paling lama di dalam array dari total
-  totalSuhu = totalSuhu - arraySuhu[indexSampel]; 
-  
-  // Masukkan nilai suhu yang baru dibaca ke dalam array
-  arraySuhu[indexSampel] = suhuKasar; 
-  
-  // Tambahkan nilai baru tersebut ke dalam total
-  totalSuhu = totalSuhu + arraySuhu[indexSampel]; 
-  
-  // Majukan indeks. Jika sudah di ujung array, kembali ke 0 (Circular)
-  indexSampel = indexSampel + 1;
-  if (indexSampel >= jumlahSampel) {
-    indexSampel = 0; 
+  // 4. Observasi Serial Monitor (Non-blocking)
+  if (millis() - timerSerial >= intervalSerial) {
+    float estimasiTegangan = (nilaiPWM / 255.0) * 5.0; // Perkiraan tegangan matematis
+    
+    Serial.print("ADC: "); Serial.print(nilaiADC);
+    Serial.print(" | PWM: "); Serial.print(nilaiPWM);
+    Serial.print(" | Estimasi Voltase Vout: "); Serial.print(estimasiTegangan, 2);
+    Serial.println(" V");
+    
+    timerSerial = millis();
   }
-
-  // 3. Kalkulasi hasil akhir
-  float suhuHalus = totalSuhu / jumlahSampel;
-
-  // 4. Visualisasikan perbandingannya
-  Serial.print("Kasar (Hardware): ");
-  Serial.print(suhuKasar, 2);
-  Serial.print(" °C | Halus (Software): ");
-  Serial.print(suhuHalus, 2);
-  Serial.println(" °C");
-
-  delay(50); // Jeda sampling
 }
