@@ -537,7 +537,7 @@
       },
       {
         "netclass": "Power",
-        "pattern": "vcc"
+        "pattern": "+3.3V"
       }
     ]
   },
@@ -682,7 +682,7 @@
         "uuid": "f05703a7-aff1-4e22-9852-b271234f3fbf"
       }
     ],
-    "used_designators": "J1-12,#FLG1-4,R1-4,A2,PS1,#PWR1-23,D1-2,U1-2,SW1-3,JP1-2",
+    "used_designators": "J1-12,#FLG1-4,R1-4,A1-2,PS1,#PWR1-27,D1-2,U1-2,SW1-3,JP1-2,RN1,LCD1",
     "variants": []
   },
   "sheets": [

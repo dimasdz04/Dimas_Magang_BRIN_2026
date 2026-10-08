@@ -1,18 +1,58 @@
 ** Drc report for Platform.kicad_pcb **
-** Created on 2026-09-29T13:51:41 **
-** Report includes: Errors, Exclusions **
+** Created on 2026-10-06T11:01:49 **
+** Report includes: Errors, Warnings, Exclusions **
 
-** Found 0 DRC violations **
+** Found 10 DRC violations **
+[shorting_items]: Items shorting two nets (nets /A1 and unconnected-(A2-PadA1))
+    Local override; error
+    @(103.7000 mm, 95.5160 mm): Track [/A1] on B.Cu, length 0.0389 mm
+    @(103.7275 mm, 95.4885 mm): PTH pad A1 [unconnected-(A2-PadA1)] of A2
+[shorting_items]: Items shorting two nets (nets unconnected-(A2-PadA1) and /A1)
+    Local override; error
+    @(103.7275 mm, 95.4885 mm): PTH pad A1 [unconnected-(A2-PadA1)] of A2
+    @(103.7000 mm, 101.7965 mm): Track [/A1] on B.Cu, length 6.2805 mm
+[shorting_items]: Items shorting two nets (nets /A0 and unconnected-(A2-PadA0))
+    Local override; error
+    @(126.8407 mm, 123.0000 mm): Track [/A0] on F.Cu, length 2.5395 mm
+    @(125.0450 mm, 121.2043 mm): Via [unconnected-(A2-PadA0)] on F.Cu - B.Cu
+[shorting_items]: Items shorting two nets (nets unconnected-(A2-PadA0) and /A0)
+    Local override; error
+    @(101.1875 mm, 95.4885 mm): PTH pad A0 [unconnected-(A2-PadA0)] of A2
+    @(101.2300 mm, 95.4100 mm): Track [/A0] on B.Cu, length 0.0601 mm
+[shorting_items]: Items shorting two nets (nets unconnected-(A2-PadA0) and /A0)
+    Local override; error
+    @(101.1875 mm, 95.4885 mm): PTH pad A0 [unconnected-(A2-PadA0)] of A2
+    @(101.1875 mm, 95.4525 mm): Track [/A0] on B.Cu, length 6.0306 mm
+[shorting_items]: Items shorting two nets (nets unconnected-(A2-PadA0) and /A0)
+    Local override; error
+    @(125.0450 mm, 121.2043 mm): Via [unconnected-(A2-PadA0)] on F.Cu - B.Cu
+    @(124.1398 mm, 120.2991 mm): Track [/A0] on B.Cu, length 1.2801 mm
+[solder_mask_bridge]: Rear solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(103.7000 mm, 95.5160 mm): Track [/A1] on B.Cu, length 0.0389 mm
+    @(103.7275 mm, 95.4885 mm): PTH pad A1 [unconnected-(A2-PadA1)] of A2
+[solder_mask_bridge]: Rear solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(103.7000 mm, 101.7965 mm): Track [/A1] on B.Cu, length 6.2805 mm
+    @(103.7275 mm, 95.4885 mm): PTH pad A1 [unconnected-(A2-PadA1)] of A2
+[solder_mask_bridge]: Rear solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(101.1875 mm, 95.4525 mm): Track [/A0] on B.Cu, length 6.0306 mm
+    @(101.1875 mm, 95.4885 mm): PTH pad A0 [unconnected-(A2-PadA0)] of A2
+[solder_mask_bridge]: Rear solder mask aperture bridges items with different nets
+    Rule: board setup solder mask min width; error
+    @(101.2300 mm, 95.4100 mm): Track [/A0] on B.Cu, length 0.0601 mm
+    @(101.1875 mm, 95.4885 mm): PTH pad A0 [unconnected-(A2-PadA0)] of A2
 
 ** Found 2 unconnected pads **
 [unconnected_items]: Missing connection between items
     Local override; error
-    @(53.4250 mm, 29.2500 mm): Zone [GND] on B.Cu, priority 0
-    @(53.4250 mm, 29.2500 mm): Zone [GND] on B.Cu, priority 0
+    @(101.1875 mm, 95.4885 mm): PTH pad A0 [unconnected-(A2-PadA0)] of A2
+    @(125.0450 mm, 121.2043 mm): Via [unconnected-(A2-PadA0)] on F.Cu - B.Cu
 [unconnected_items]: Missing connection between items
     Local override; error
-    @(53.4250 mm, 29.2500 mm): Zone [GND] on B.Cu, priority 0
-    @(53.4250 mm, 29.2500 mm): Zone [GND] on B.Cu, priority 0
+    @(126.8407 mm, 123.0000 mm): Track [/A0] on F.Cu, length 2.5395 mm
+    @(124.1398 mm, 120.2991 mm): Track [/A0] on B.Cu, length 1.2801 mm
 
 ** Found 0 Footprint errors **
 
